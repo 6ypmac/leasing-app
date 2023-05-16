@@ -75,20 +75,20 @@ After pressing the Save button, the contract panel closes, and the Contracts tab
 
 ### OpenAPI:
 
-*** Standardization:** OpenAPI provides a standard, language-agnostic interface to RESTful APIs, which allows both humans and computers to discover and understand the capabilities of the service.
+* **Standardization:** OpenAPI provides a standard, language-agnostic interface to RESTful APIs, which allows both humans and computers to discover and understand the capabilities of the service.
 
 ### Angular Material:
 
-*** Consistent, Modern Look and Feel:** Angular Material provides a set of reusable, well-tested, and accessible UI components based on Material Design.
-*** Responsive:** Angular Material components are designed to work for both web and mobile, ensuring that your application is accessible on all kinds of devices.
-*** Easy Integration with Angular:** Angular Material is built specifically for Angular, so it integrates well and follows the same development philosophy.
+* **Consistent, Modern Look and Feel:** Angular Material provides a set of reusable, well-tested, and accessible UI components based on Material Design.
+* **Responsive:** Angular Material components are designed to work for both web and mobile, ensuring that your application is accessible on all kinds of devices.
+* **Easy Integration with Angular:** Angular Material is built specifically for Angular, so it integrates well and follows the same development philosophy.
 
 ### Lodash:
 
-*** Utility Functions:** Lodash provides a wealth of utility functions that deal with the manipulation and combination of arrays, objects, and functions.
-*** Performance:** Many Lodash functions are highly optimized for performance.
+* **Utility Functions:** Lodash provides a wealth of utility functions that deal with the manipulation and combination of arrays, objects, and functions.
+* **Performance:** Many Lodash functions are highly optimized for performance.
 
 ### http-server:
 
-*** Simplicity:** It's a simple, zero-configuration command-line HTTP server, making it quick and easy to get a server running.
+* **Simplicity:** It's a simple, zero-configuration command-line HTTP server, making it quick and easy to get a server running.
 
