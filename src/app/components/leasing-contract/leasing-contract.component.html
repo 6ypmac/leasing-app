@@ -1,0 +1,129 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ cardTitle }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div class="wrapper-form" >
+      <form class="form-all-size" [formGroup]="contractForm" (ngSubmit)="onSubmit()">
+        <div class="wrapper-form-field" *ngIf="!isCreate">
+          <mat-form-field appearance="fill">
+            <mat-label>Contract No</mat-label>
+            <input
+              matInput
+              type="number"
+              formControlName="contractNo"
+              required
+            >
+            <mat-error *ngIf="contractForm.controls['contractNo'].invalid">Contract No is required and number</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="wrapper-form-field">
+          <mat-form-field appearance="fill">
+            <mat-label>Monthly Rate</mat-label>
+            <input
+              matInput
+              type="number"
+              formControlName="monthlyRate"
+              required
+            >
+            <mat-icon matSuffix>euro_symbol</mat-icon>
+            <mat-error *ngIf="contractForm.controls['monthlyRate'].invalid">Monthly Rate is required</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="wrapper-form-field wrapper-form-field-actions">
+          <mat-form-field
+            class="mat-form-field-readonly"
+            appearance="fill"
+            (click)="updateCustomer()"
+          >
+            <mat-label>Customer</mat-label>
+            <input
+              matInput
+              formControlName="customer"
+              required
+            >
+            <mat-error *ngIf="contractForm.controls['monthlyRate'].invalid">Customer is required.</mat-error>
+          </mat-form-field>
+
+          <button
+            mat-icon-button
+            color="warn"
+            aria-label="Delete Customer"
+            type="button"
+            [disabled]="isCreate"
+            (click)="deleteCustomer()"
+          >
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+
+          <button
+            mat-icon-button
+            color="primary"
+            aria-label="Edit/Create Customer"
+            type="button"
+            (click)="updateCustomer()"
+          >
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+        </div>
+
+        <div class="wrapper-form-field wrapper-form-field-actions">
+          <mat-form-field
+            class="mat-form-field-readonly"
+            appearance="fill"
+            (click)="updateVehicle()"
+          >
+            <mat-label>Vehicle</mat-label>
+            <input
+              matInput
+              formControlName="vehicle"
+              required
+            >
+            <mat-error *ngIf="contractForm.controls['vehicle'].invalid">Vehicle is required.</mat-error>
+          </mat-form-field>
+
+          <button
+            mat-icon-button
+            color="warn"
+            aria-label="Delete Vehicle"
+            type="button"
+            [disabled]="isCreate"
+            (click)="deleteVehicle()"
+          >
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+
+          <button
+            mat-icon-button
+            color="primary"
+            aria-label="Edit/Create Vehicle"
+            type="button"
+            (click)="updateVehicle()"
+          >
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+        </div>
+
+        <mat-card-actions align="end">
+          <button
+            mat-raised-button
+            color="basic"
+            type="button"
+            (click)="resetForm()"
+          >Cancel</button>
+
+          <button
+            mat-raised-button
+            color="accent"
+            type="submit"
+            [disabled]="contractForm.invalid"
+          >Save</button>
+        </mat-card-actions>
+      </form>
+    </div>
+
+  </mat-card-content>
+</mat-card>

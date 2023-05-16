@@ -1,0 +1,78 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ cardTitle }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+    <mat-table [dataSource]="contracts" class="mat-elevation-z8">
+      <ng-container matColumnDef="contractNo">
+        <mat-header-cell *matHeaderCellDef>Contract No</mat-header-cell>
+        <mat-cell *matCellDef="let contract">{{ contract.contractId }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="customer">
+        <mat-header-cell *matHeaderCellDef>Customer</mat-header-cell>
+        <mat-cell *matCellDef="let contract">
+          {{ contract.customerName }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="vehicle">
+        <mat-header-cell *matHeaderCellDef>Vehicle</mat-header-cell>
+        <mat-cell *matCellDef="let contract">
+          {{ contract.vehicleName }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="vin">
+        <mat-header-cell *matHeaderCellDef>VIN</mat-header-cell>
+        <mat-cell *matCellDef="let contract">
+          {{ !contract.vin ? '-' : contract.vin }}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="monthlyRate">
+        <mat-header-cell *matHeaderCellDef>Monthly Rate</mat-header-cell>
+        <mat-cell *matCellDef="let contract">{{ contract.monthlyRate }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="vehiclePrice">
+        <mat-header-cell *matHeaderCellDef>Vehicle Price</mat-header-cell>
+        <mat-cell *matCellDef="let contract">{{ contract.vehiclePrice }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="detailsLink">
+        <mat-header-cell *matHeaderCellDef>Details</mat-header-cell>
+        <mat-cell *matCellDef="let contract">
+          <button
+            mat-icon-button
+            color="primary"
+            aria-label="Open Contract Details"
+            type="button"
+            (click)="selectContract(contract.contractId)"
+            [disabled]="cardService.isCardVisible$ | async"
+          >
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button
+      mat-raised-button
+      color="accent"
+      type="button"
+      (click)="selectContract(0)"
+      [disabled]="cardService.isCardVisible$ | async"
+    >+ Add New Contract</button>
+  </mat-card-actions>
+</mat-card>
+
+<div class="content content-card" *ngIf="cardService.isCardVisible$ | async">
+  <app-leasing-contract [contractId]="selectedContractId"></app-leasing-contract>
+</div>

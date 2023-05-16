@@ -1,0 +1,49 @@
+<h2>{{ title }}</h2>
+
+<div class="wrapper-form" >
+  <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input type="text" matInput formControlName="firstName">
+        <mat-error *ngIf="customerForm.controls['firstName'].hasError('required') && customerForm.controls['firstName'].touched">
+          First Name is reguired.
+        </mat-error>
+        <mat-error *ngIf="customerForm.controls['firstName'].hasError('maxlength') && customerForm.controls['firstName'].touched">
+          First Name is too long.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input type="text" matInput formControlName="lastName">
+        <mat-error *ngIf="customerForm.controls['lastName'].hasError('required') && customerForm.controls['lastName'].touched">
+          Last Name is reguired.
+        </mat-error>
+        <mat-error *ngIf="customerForm.controls['lastName'].hasError('maxlength') && customerForm.controls['lastName'].touched">
+          Last Name is too long.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Birth Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions align="end">
+      <button
+        mat-raised-button
+        color="basic"
+        (click)="closeDialog()"
+      >Cancel</button>
+
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit"
+        [disabled]="customerForm.invalid"
+      >Save</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,65 @@
+<h2>{{ title }}</h2>
+
+<div class="wrapper-form" >
+  <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Brand</mat-label>
+        <mat-select formControlName="brand">
+          <mat-option *ngFor="let brand of brands" [value]="brand.name">
+            {{brand.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="vehicleForm.controls['brand'].invalid">
+          Brand is required.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Model</mat-label>
+        <mat-select formControlName="model">
+          <mat-option *ngFor="let model of models" [value]="model.name">
+            {{model.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="vehicleForm.controls['model'].invalid">
+          Model is required.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Model Year</mat-label>
+        <input type="number" matInput formControlName="modelYear">
+        <mat-error *ngIf="vehicleForm.controls['modelYear'].invalid && vehicleForm.controls['modelYear'].touched">
+          Model Year should be between 1885 and current year.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>VIN</mat-label>
+        <input type="text" matInput formControlName="vin">
+        <mat-error *ngIf="vehicleForm.controls['vin'].invalid && vehicleForm.controls['vin'].touched">
+          VIN is too long.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Price</mat-label>
+        <input type="number" matInput formControlName="price">
+        <mat-error *ngIf="vehicleForm.controls['price'].invalid && vehicleForm.controls['price'].touched">
+          Price is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions align="end">
+      <button
+        mat-raised-button
+        color="basic"
+        (click)="closeDialog()"
+      >Cancel</button>
+
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit"
+        [disabled]="vehicleForm.invalid"
+      >Save</button>
+    </div>
+  </form>
+</div>
